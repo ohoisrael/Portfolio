@@ -18,7 +18,7 @@ const About = () => {
         <div className="about__content">
 
           <p>
-          I am a MERN Stack Developer with One year of experience building responsive web applications, I create interactive and user-friendly interfaces. I am passionate about continuous learning and delivering high-quality solutions.
+          I am a MERN Stack Developer skilled in building responsive web applications and creating interactive, user-friendly interfaces. My expertise includes working with modern web technologies to deliver efficient and scalable solutions.
           </p>
 
           <a href="#contact" className="btn btn-primary">
