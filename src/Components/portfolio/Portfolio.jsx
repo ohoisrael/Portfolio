@@ -34,13 +34,13 @@ const Portfolio = () => {
           <div className="portfolio__item-image">
             <img src={IMG2} alt="" />
           </div>
-          <h3>Nurse Booker Web-App</h3>
+          <h3>Nurse Booker</h3>
           <div className="portfolio__item-cta">
             <a href="https://github.com/ohoisrael/Nurse-Booker" className="btn" target="_blank">
               Github
             </a>
             <a
-              href="https://nurse-booker-app.vercel.app/"
+              href="https://nurse-booker.onrender.com/"
               className="btn btn-primary"
               target="_blank"
             >
