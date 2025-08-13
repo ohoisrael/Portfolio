@@ -16,13 +16,11 @@ const Portfolio = () => {
           <div className="portfolio__item-image">
             <img src={IMG1} alt="" />
           </div>
-          <h3>Instagram Clone</h3>
+          <h3>Facility Booking for Ghana Communication Technology University</h3>
           <div className="portfolio__item-cta">
-            <a href="https://github.com/ohoisrael/Instagram-Clone" className="btn" target="_blank">
-              Github
-            </a>
+            
             <a
-              href="https://social-app-israeloho.vercel.app"
+              href="https://booking.gctu.edu.gh"
               className="btn btn-primary"
               target="_blank"
             >
@@ -34,13 +32,11 @@ const Portfolio = () => {
           <div className="portfolio__item-image">
             <img src={IMG2} alt="" />
           </div>
-          <h3>Nurse Booker</h3>
+          <h3>Pharmacy Web-App</h3>
           <div className="portfolio__item-cta">
-            <a href="https://github.com/ohoisrael/Nurse-Booker" className="btn" target="_blank">
-              Github
-            </a>
+            
             <a
-              href="https://nurse-booker.onrender.com/"
+              href="https://mobimedgh.app"
               className="btn btn-primary"
               target="_blank"
             >
@@ -52,13 +48,11 @@ const Portfolio = () => {
           <div className="portfolio__item-image">
             <img src={IMG3} alt="" />
           </div>
-          <h3>Municipal Management System</h3>
+          <h3>Gas Company Website</h3>
           <div className="portfolio__item-cta">
-            <a href="https://github.com/ohoisrael/Municipal-System" className="btn" target="_blank">
-              Github
-            </a>
+            
             <a
-              href="https://municipal-managementsystem.onrender.com/"
+              href="https://www.gasprogh.com"
               className="btn btn-primary"
               target="_blank"
             >
