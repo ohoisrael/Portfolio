@@ -18,7 +18,7 @@ const About = () => {
         <div className="about__content">
 
           <p>
-          I am a Full-Stack Developer skilled in building responsive web applications and creating interactive, user-friendly interfaces. My expertise includes working with modern Web technologies to deliver efficient and scalable solutions.
+          I am a Full-Stack Developer skilled in building responsive web and mobile applications and creating interactive, user-friendly interfaces. My expertise includes working with modern Web technologies to deliver efficient and scalable solutions.
           </p>
 
           <a href="#contact" className="btn btn-primary">
