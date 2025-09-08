@@ -5,45 +5,31 @@ import { FiInstagram } from "react-icons/fi";
 import { BsTwitterX } from "react-icons/bs";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+  
   return (
     <footer>
       <a href="#" className="footer__logo">
         OhoTech
       </a>
 
-      <ul className="permalinks">
-        <li>
-          <a href="#"></a>Home
-        </li>
-        <li>
-          <a href="#about"></a>About
-        </li>
-        <li>
-          <a href="experience"></a>Experience
-        </li>
-        <li>
-          <a href="portfolio"></a>Portfolio
-        </li>
-        <li>
-          <a href="contact"></a>Contact
-        </li>
-      </ul>
-
       <div className="footer__socials">
-        <a href="https://www.facebook.com/wunom.izmaname">
+        <a href="https://www.facebook.com/wunom.izmaname" aria-label="Facebook">
           <FaFacebookF />
         </a>
-        <a href="https://www.instagram.com/israeloho?igsh=dm14M2UwNWRmNjR2&utm_source=qr">
+        <a href="https://www.instagram.com/israeloho?igsh=dm14M2UwNWRmNjR2&utm_source=qr" aria-label="Instagram">
           <FiInstagram />
         </a>
-        <a href="https://x.com/ohoisrael">
+        <a href="https://x.com/ohoisrael" aria-label="Twitter">
           <BsTwitterX />
         </a>
       </div>
 
       <div className="footer__copyright">
-        <small>&copy; Israel Oho. All Rights Reserved</small>
+        <small>&copy; {currentYear} OhoTech. All Rights Reserved</small>
       </div>
+
+      
     </footer>
   );
 };

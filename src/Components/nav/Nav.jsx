@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./nav.css";
 import { AiOutlineHome, AiOutlineUser } from "react-icons/ai";
 import { BiBook, BiMessageSquareDetail } from "react-icons/bi";
+import { FaFolderOpen } from "react-icons/fa";
 
 
 const Nav = () => {
@@ -23,11 +24,18 @@ const Nav = () => {
         <AiOutlineUser />
       </a>
       <a
-        href="#experience"
-        onClick={() => setActiveNav("#experience")}
-        className={activeNav === "#experience" ? "active" : ""}
+        href="#services"
+        onClick={() => setActiveNav("#services")}
+        className={activeNav === "#services" ? "active" : ""}
       >
         <BiBook />
+      </a>
+      <a
+        href="#portfolio"
+        onClick={() => setActiveNav("#portfolio")}
+        className={activeNav === "#portfolio" ? "active" : ""}
+      >
+        <FaFolderOpen />
       </a>
       <a
         href="#contact"

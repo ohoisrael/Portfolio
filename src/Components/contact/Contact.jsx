@@ -29,7 +29,7 @@ const Contact = () => {
   return (
     <section id="contact">
       <h5>Get In Touch</h5>
-      <h2>Contact Me</h2>
+      <h2>Contact Us</h2>
 
       <div className="container contact__container">
         <div className="contact__options">
