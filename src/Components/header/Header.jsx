@@ -4,14 +4,14 @@ import "./header.css";
 import CTA from "./CTA";
 import HeaderSocials from "./HeaderSocials";
 
-const SplitText = ({ text, className = "", delay = 0 }) => {
+const SplitText = ({ text, className = "", delay = 0, gradient = false }) => {
   const words = text.split(" ");
   return (
     <span className={className} aria-label={text}>
       {words.map((w, i) => (
         <span key={i} className="split-word" aria-hidden="true">
           <motion.span
-            className="split-word__inner"
+            className={`split-word__inner${gradient ? " text-gradient" : ""}`}
             initial={{ y: "110%" }}
             animate={{ y: 0 }}
             transition={{
@@ -64,9 +64,7 @@ const Header = () => {
           </span>
           <span className="hero__line">
             <SplitText text="web &" delay={0.35} />{" "}
-            <span className="text-gradient">
-              <SplitText text="mobile experiences." delay={0.5} />
-            </span>
+            <SplitText text="mobile experiences." delay={0.5} gradient />
           </span>
         </h1>
 
