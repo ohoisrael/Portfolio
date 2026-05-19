@@ -1,91 +1,146 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { FiExternalLink, FiArrowUpRight } from "react-icons/fi";
 import "./portfolio.css";
-import IMG1 from "../../assets/portfolio1.png";
-import IMG2 from "../../assets/portfolio2.png";
-import IMG3 from "../../assets/portfolio3.png";
+import IMG1 from "../../assets/portfolio1.webp";
+import IMG2 from "../../assets/portfolio2.webp";
+import IMG3 from "../../assets/portfolio3.webp";
+
+const projects = [
+  {
+    id: 1,
+    image: IMG1,
+    title: "GCTU Facility Booking",
+    description:
+      "End-to-end booking platform for Ghana Communication Technology University's campus facilities.",
+    category: "web",
+    tags: ["React", "Node.js", "MongoDB"],
+    url: "https://booking.gctu.edu.gh",
+  },
+  {
+    id: 2,
+    image: IMG2,
+    title: "MobiMed Pharmacy",
+    description:
+      "Pharmacy web platform connecting patients to medication and licensed pharmacies.",
+    category: "web",
+    tags: ["React", "Express", "MySQL"],
+    url: "https://mobimedgh.app",
+  },
+  {
+    id: 3,
+    image: IMG3,
+    title: "GCTU CareerHub",
+    description:
+      "Industrial attachment and career portal for GCTU students and partners.",
+    category: "web",
+    tags: ["React", "Node.js", "REST API"],
+    url: "https://industrial.gctu.edu.gh",
+  },
+];
+
+const filters = [
+  { key: "all", label: "All Work" },
+  { key: "web", label: "Web" },
+  { key: "mobile", label: "Mobile" },
+];
 
 const Portfolio = () => {
   const [filter, setFilter] = useState("all");
-  
-  const projects = [
-    {
-      id: 1,
-      image: IMG1,
-      title: "Facility Booking for Ghana Communication Technology University",
-      category: "web",
-      url: "https://booking.gctu.edu.gh"
-    },
-    {
-      id: 2,
-      image: IMG2,
-      title: "Pharmacy Web-App",
-      category: "web",
-      url: "https://mobimedgh.app"
-    },
-    {
-      id: 3,
-      image: IMG3,
-      title: "Gas Company Website",
-      category: "web",
-      url: "https://www.gasprogh.com"
-    },
-    
-  ];
 
-  const filteredProjects = filter === "all" 
-    ? projects 
-    : projects.filter(project => project.category === filter);
+  const filtered =
+    filter === "all" ? projects : projects.filter((p) => p.category === filter);
 
   return (
     <section id="portfolio" className="portfolio">
       <div className="container">
-        <motion.div 
+        <motion.div
           className="section-header"
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
         >
-          <h5>Our Work</h5>
-          <h2>Portfolio</h2>
+          <span className="section-eyebrow">Selected work</span>
+          <h2 className="section-title">
+            Projects we're <span className="text-gradient">proud of.</span>
+          </h2>
+          <p className="section-subtitle">
+            A glimpse at recent products we've designed, built, and shipped.
+          </p>
         </motion.div>
 
-       
+        <div className="portfolio__filter" role="tablist">
+          {filters.map((f) => (
+            <button
+              key={f.key}
+              role="tab"
+              aria-selected={filter === f.key}
+              className={filter === f.key ? "is-active" : ""}
+              onClick={() => setFilter(f.key)}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
 
-        <div className="portfolio__grid">
-          <AnimatePresence mode="wait">
-            {filteredProjects.map((project) => (
-              <motion.div
-                key={project.id}
-                className="portfolio__item"
+        <motion.div className="portfolio__grid" layout>
+          <AnimatePresence mode="popLayout">
+            {filtered.map((p, i) => (
+              <motion.article
+                key={p.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.3 }}
-                whileHover={{ y: -10 }}
+                className="portfolio-card"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.45, delay: i * 0.06 }}
               >
-                <div className="portfolio__item-image">
-                  <img src={project.image} alt={project.title} />
-                  <div className="portfolio__overlay">
-                    <h3>{project.title}</h3>
-                    <div className="portfolio__item-cta">
-                      <a
-                        href={project.url}
-                        className="btn btn-primary"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        View Project
-                      </a>
-                    </div>
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="portfolio-card__link"
+                  aria-label={`Open ${p.title}`}
+                >
+                  <div className="portfolio-card__media">
+                    <img src={p.image} alt={p.title} loading="lazy" />
+                    <div className="portfolio-card__shine" />
                   </div>
-                </div>
-              </motion.div>
+                  <div className="portfolio-card__body">
+                    <div className="portfolio-card__head">
+                      <h3>{p.title}</h3>
+                      <span className="portfolio-card__icon">
+                        <FiArrowUpRight />
+                      </span>
+                    </div>
+                    <p>{p.description}</p>
+                    <div className="portfolio-card__tags">
+                      {p.tags.map((t) => (
+                        <span key={t} className="tag">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <span className="portfolio-card__cta">
+                      <FiExternalLink /> View live site
+                    </span>
+                  </div>
+                </a>
+              </motion.article>
             ))}
           </AnimatePresence>
-        </div>
+        </motion.div>
+
+        {filtered.length === 0 && (
+          <motion.p
+            className="portfolio__empty"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            More projects in this category coming soon.
+          </motion.p>
+        )}
       </div>
     </section>
   );

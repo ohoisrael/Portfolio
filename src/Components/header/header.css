@@ -1,79 +1,265 @@
-header {
-    height: 100vh;
-    padding-top: 7rem;
-    overflow: hidden;
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero {
+  min-height: 100vh;
+  padding: 8rem 0 4rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
-.header__container {
-    text-align: center;
-    height: 100%;
-    position: relative;
+.hero__orbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
 }
 
-/* ======= CTA ========== */
+.hero__container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 980px;
+}
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.hero__eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
+}
+
+.hero__title {
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 7vw, 5.25rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.75rem;
+}
+
+.hero__line {
+  display: block;
+}
+
+.split-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.split-word__inner {
+  display: inline-block;
+  will-change: transform;
+}
+
+.hero__lede {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  max-width: 620px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.65;
+}
+
 .cta {
-    margin-top: 2.5rem;
-    display: flex;
-    gap: 1.2rem;
-    justify-content: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-/* ======= HEADER SOCILAS ========== */
+/* ==========================================================================
+   Marquee strip
+   ========================================================================== */
+
+.hero__marquee {
+  margin-top: 4rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+}
+
+.hero__marquee-label {
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  font-size: 0.72rem;
+}
+
+.hero__marquee-track {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--text-muted);
+}
+
+.hero__marquee-track span {
+  position: relative;
+  font-size: 0.95rem;
+}
+
+.hero__marquee-track span:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -1rem;
+  top: 50%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  transform: translateY(-50%);
+}
+
+/* ==========================================================================
+   Social rail
+   ========================================================================== */
+
 .header__socials {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.8rem;
-    position: absolute;
-    left: 0;
-    bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.1rem;
+  position: absolute;
+  left: 2.25rem;
+  bottom: 3rem;
+  z-index: 2;
+  font-size: 1.1rem;
+  color: var(--text-muted);
 }
 
 .header__socials::after {
-    content: "";
-    width: 1px;
-    height: 2rem;
-    background: var(--color-primary);
+  content: "";
+  width: 1px;
+  height: 3rem;
+  background: linear-gradient(to bottom, var(--accent), transparent);
 }
 
-/* ======= ME ========== */
-.me {
-    background: linear-gradient(var(--color-primary),transparent);
-    width: 22rem;
-    height: 30rem;
-    position: absolute;
-    left: calc(50% - 11rem);
-    margin-top: 4rem;
-    border-radius: 12rem 12rem 0 0;
-    overflow: hidden;
+.header__socials a {
+  transition: color 250ms var(--ease);
 }
 
-/* SCROLL DOWN */
+/* ==========================================================================
+   Scroll indicator
+   ========================================================================== */
 
-.scroll__down {
-    position: absolute;
-    right: -2.3rem;
-    bottom: 5rem;
-    transform: rotate(90deg);
-    font-weight: 200;
-    font-size: 0.9rem;
+.hero__scroll {
+  position: absolute;
+  right: 2.25rem;
+  bottom: 3rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-muted);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
-/* ============= MEDIA QUERIES (MEDIUM DEVICES) ============= */
-@media screen and (max-width: 1024px) {
-    header {
-        height: 68vh;
-    }
+.hero__scroll-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
 }
 
-/* ============= MEDIA QUERIES (SMALL DEVICES) ============= */
-@media screen and (max-width: 600px) {
-    header {
-        height: 180vh;
-    }
+.hero__scroll-line {
+  position: relative;
+  width: 1px;
+  height: 3rem;
+  background: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+}
 
-    .header__socials,
-    .scroll__down{
-        display: none;
-    }
+.hero__scroll-dot {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 1rem;
+  background: var(--accent);
+  animation: scrollDot 2.2s ease-in-out infinite;
+}
+
+@keyframes scrollDot {
+  0% {
+    top: -1rem;
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    top: 3rem;
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .header__socials,
+  .hero__scroll {
+    left: 1.25rem;
+    right: 1.25rem;
+    bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: auto;
+    padding: 7rem 0 5rem;
+  }
+
+  .header__socials,
+  .hero__scroll {
+    display: none;
+  }
+
+  .hero__marquee {
+    margin-top: 2.5rem;
+  }
 }

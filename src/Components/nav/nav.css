@@ -1,33 +1,90 @@
-nav {
-    background: rgba(0, 0, 0, 0.3);
-    width: max-content;
-    display: block;
-    padding: 0.7rem 1.7rem;
-    z-index: 2;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 2rem;
-    display: flex;
-    gap: 0.8rem;
-    border-radius: 3rem;
-    backdrop-filter: blur(15px);
+.floating-nav {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem;
+  border-radius: 999px;
+  background: rgba(15, 15, 26, 0.75);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
-nav a {
-    background: transparent;
-    padding: 0.9rem;
-    border-radius: 50%;
-    display: flex;
-    color: var(--color-light);
-    font-size: 1.1rem;
+.floating-nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  transition: color 250ms var(--ease), background 250ms var(--ease),
+    transform 250ms var(--ease);
 }
 
-nav a:hover {
-    background: rgba(0, 0, 0, 0.3);
+.floating-nav a:hover {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-2px);
 }
 
-nav a.active {
-    background: var(--color-primary);
-    color: var(--color-bg)
+.floating-nav a.is-active {
+  color: #06060d;
+  background: var(--gradient);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.45);
+}
+
+.floating-nav__icon {
+  display: inline-flex;
+  pointer-events: none;
+}
+
+.floating-nav__tooltip {
+  position: absolute;
+  bottom: calc(100% + 0.6rem);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 0.35rem 0.7rem;
+  border-radius: 0.5rem;
+  background: rgba(15, 15, 26, 0.95);
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms var(--ease), transform 200ms var(--ease);
+}
+
+.floating-nav a:hover .floating-nav__tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (max-width: 600px) {
+  .floating-nav {
+    bottom: 1rem;
+    gap: 0.2rem;
+    padding: 0.3rem;
+  }
+
+  .floating-nav a {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 0.95rem;
+  }
+
+  .floating-nav__tooltip {
+    display: none;
+  }
 }
