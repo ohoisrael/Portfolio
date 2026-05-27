@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FiExternalLink, FiArrowUpRight } from "react-icons/fi";
+import { FiExternalLink, FiArrowUpRight, FiDownload } from "react-icons/fi";
 import "./portfolio.css";
 import IMG1 from "../../assets/portfolio1.webp";
 import IMG2 from "../../assets/portfolio2.webp";
 import IMG3 from "../../assets/portfolio3.webp";
+import APP1 from "../../assets/app1.webp";
 
 const projects = [
   {
@@ -36,6 +37,17 @@ const projects = [
     category: "web",
     tags: ["React", "Node.js", "REST API"],
     url: "https://industrial.gctu.edu.gh",
+  },
+  {
+    id: 4,
+    image: APP1,
+    title: "GCTU News App",
+    description:
+      "Native mobile news app for Ghana Communication Technology University. Breaking news, categorized feeds, and announcements — built with React Native and Expo.",
+    category: "mobile",
+    tags: ["React Native", "Expo", "iOS / Android"],
+    url: "https://expo.dev/accounts/israeloho/projects/GCTUNewsApp/builds/f77f78a8-7bd4-408e-a72a-1ed3a3584b37",
+    ctaLabel: "Download build",
   },
 ];
 
@@ -123,7 +135,8 @@ const Portfolio = () => {
                       ))}
                     </div>
                     <span className="portfolio-card__cta">
-                      <FiExternalLink /> View live site
+                      {p.category === "mobile" ? <FiDownload /> : <FiExternalLink />}{" "}
+                      {p.ctaLabel || "View live site"}
                     </span>
                   </div>
                 </a>
