@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
-import { FiDownload, FiArrowRight } from "react-icons/fi";
-import CV from "../../assets/cv.pdf";
+import { FiArrowRight } from "react-icons/fi";
 
 const MagneticBtn = ({ children, className = "", as = "a", ...rest }) => {
   const ref = useRef(null);
@@ -38,14 +37,14 @@ const MagneticBtn = ({ children, className = "", as = "a", ...rest }) => {
 const CTA = () => {
   return (
     <div className="cta">
-      <MagneticBtn href={CV} download className="btn-primary">
-        Download CV
+      <MagneticBtn href="#contact" className="btn-primary">
+        Let's Talk
         <span className="btn-icon">
-          <FiDownload />
+          <FiArrowRight />
         </span>
       </MagneticBtn>
-      <MagneticBtn href="#contact">
-        Let's Talk
+      <MagneticBtn href="#portfolio">
+        See our work
         <span className="btn-icon">
           <FiArrowRight />
         </span>
