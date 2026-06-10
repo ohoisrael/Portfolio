@@ -4,7 +4,7 @@ import { MdOutlineEmail } from "react-icons/md";
 import { RiMessengerLine } from "react-icons/ri";
 import { BsWhatsapp } from "react-icons/bs";
 import { FiSend, FiCheckCircle } from "react-icons/fi";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import "./contact.css";
 
 const channels = [
@@ -54,23 +54,35 @@ const Contact = () => {
   const form = useRef();
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-    setStatus("sending");
+  const sendEmail = async (e) => {
+  e.preventDefault();
+  setStatus("sending");
 
-    emailjs
-      .sendForm("service_7h46ehl", "template_plpbj1h", form.current, {
+  try {
+    const result = await emailjs.sendForm(
+      "service_7h46ehl",
+      "template_plpbj1h",
+      form.current,
+      {
         publicKey: "vw1q-3zGwxFNMM-lk",
-      })
-      .then(
-        () => {
-          setStatus("success");
-          form.current.reset();
-          setTimeout(() => setStatus("idle"), 5000);
-        },
-        () => setStatus("error")
-      );
-  };
+      }
+    );
+
+    console.log("SUCCESS!", result);
+
+    setStatus("success");
+
+    form.current.reset();
+
+    setTimeout(() => {
+      setStatus("idle");
+    }, 5000);
+  } catch (error) {
+    console.error("EMAILJS ERROR:", error);
+
+    setStatus("error");
+  }
+};
 
   return (
     <section id="contact" className="contact">
