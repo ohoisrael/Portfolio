@@ -15,18 +15,16 @@ const projects = [
     description:
       "End-to-end booking platform for Ghana Communication Technology University's campus facilities.",
     category: "web",
-    tags: ["React", "Node.js", "MongoDB"],
     url: "https://booking.gctu.edu.gh",
   },
   {
     id: 2,
     image: IMG2,
-    title: "MobiMed Pharmacy",
+    title: "GLAMAIN",
     description:
-      "Pharmacy web platform connecting patients to medication and licensed pharmacies.",
+      "E-Commerce web platform for buying and selling products.",
     category: "web",
-    tags: ["React", "Express", "MySQL"],
-    url: "https://mobimedgh.app",
+    url: "https://gitlghglamaintest.glamain.com",
   },
   {
     id: 3,
@@ -35,13 +33,12 @@ const projects = [
     description:
       "Industrial attachment and career portal for GCTU students and partners.",
     category: "web",
-    tags: ["React", "Node.js", "REST API"],
     url: "https://industrial.gctu.edu.gh",
   },
   {
     id: 4,
     image: APP1,
-    title: "GCTU News App",
+    title: "News App",
     description:
       "Native mobile news app for Ghana Communication Technology University. Breaking news, categorized feeds, and announcements — built with React Native and Expo.",
     category: "mobile",
@@ -127,13 +124,6 @@ const Portfolio = () => {
                       </span>
                     </div>
                     <p>{p.description}</p>
-                    <div className="portfolio-card__tags">
-                      {p.tags.map((t) => (
-                        <span key={t} className="tag">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
                     <span className="portfolio-card__cta">
                       {p.category === "mobile" ? <FiDownload /> : <FiExternalLink />}{" "}
                       {p.ctaLabel || "View live site"}
