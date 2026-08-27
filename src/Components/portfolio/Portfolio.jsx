@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FiExternalLink, FiArrowUpRight, FiDownload } from "react-icons/fi";
 import "./portfolio.css";
 import IMG1 from "../../assets/portfolio1.webp";
-import IMG2 from "../../assets/portfolio2.webp";
+import IMG2 from "../../assets/portfolio2.jpg";
 import IMG3 from "../../assets/portfolio3.webp";
 import APP1 from "../../assets/app1.webp";
 
@@ -21,8 +21,7 @@ const projects = [
     id: 2,
     image: IMG2,
     title: "GLAMAIN",
-    description:
-      "E-Commerce web platform for buying and selling products.",
+    description: "E-Commerce web platform for buying and selling products.",
     category: "web",
     url: "https://gitlghglamaintest.glamain.com",
   },
@@ -125,7 +124,11 @@ const Portfolio = () => {
                     </div>
                     <p>{p.description}</p>
                     <span className="portfolio-card__cta">
-                      {p.category === "mobile" ? <FiDownload /> : <FiExternalLink />}{" "}
+                      {p.category === "mobile" ? (
+                        <FiDownload />
+                      ) : (
+                        <FiExternalLink />
+                      )}{" "}
                       {p.ctaLabel || "View live site"}
                     </span>
                   </div>
