@@ -99,7 +99,7 @@ const Contact = () => {
             Let's build <span className="text-gradient">something great.</span>
           </h2>
           <p className="section-subtitle">
-            Got a project in mind? Drop us a line — we usually reply within a
+            Got a project in mind? Drop us a line, we usually reply within a
             day.
           </p>
         </motion.div>
